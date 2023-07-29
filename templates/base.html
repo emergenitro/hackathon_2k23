@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% block styles %}{% endblock %}
+    {% block links %} {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar grad">
+        <a href="/" class="site-name">Invasion Insights</a>
+        <span class="hamburger">&#9776;</span>
+        <div class="left">
+            <a href="/">Home</a>
+            <a href="/tips">Tips</a>
+            <a href="/evacuation">Evacuation</a>
+            {% if session['loginname'] %}<a href="/livechat">Chat</a>{% endif %}
+        </div>
+        
+        <div class="right">
+            {% if not session['loginname'] %}<a href="/register">Get started</a>{% else %}
+            <a href="/logout">Logout</a>{% endif %}
+        </div>
+    </nav>     
+    {% block content %}
+    {% endblock %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert {{ category }}">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    
+    <footer>
+        <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+            <path d="M0.00,49.98 C150.00,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: url(#gradient);"></path>
+            <defs>
+                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#2C3333"></stop>
+                <stop offset="100%" stop-color="#2E4F4F"></stop>
+                </linearGradient>
+            </defs>
+        </svg>
+        <div class="footer-content">
+            <div class="left">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/livechat">Chat</a></li>
+                    <li><a href="/register">Register</a></li>
+                    <li><a href="/login">Login</a></li>
+                </ul>
+                <p>Now is the time to take action, more than ever.</p>
+            </div>
+            <div class="right">
+                <a href="https://instagram.com/itsthekarthik" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="mailto:emergenitro@gmail.com" target="_blank"><i class="fa-regular fa-envelope"></i></a>
+                <p>Emergency Hotline: +6596722230</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+    {% block scripts %} {% endblock %}
+</body>
+</html>

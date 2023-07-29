@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+{% endblock %}
+{% block content %}
+<div class="wrapper-form">
+    <form method="post">
+        {{ form.csrf_token }}
+        {{ form.email.label }} {{ form.email }}
+        <br>
+        {% for error in form.email.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+        {{ form.password.label }} {{ form.password }}
+        <br>
+        {% for error in form.password.errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+        <br>
+        <div class="cen-btn">
+            {{ form.submit(class="reg-btn") }}
+        </div>
+        <br>
+        <br>
+        <br>
+        <label><a class="linksss" href="/login"> Already have an account? </a></label>
+    </form>
+</div>
+
+{% endblock %}

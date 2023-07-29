@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %} 
+Livechat
+{% endblock %}
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/livechat.css') }}">
+{% endblock %}
+{% block content %}
+<br>
+<br>
+<div class="outline">
+    <div id="chatbox">
+    </div>
+    <br>
+    <div class="container">
+        <div class="user-messages">
+            <input type="text" placeholder="Enter Message" name="text_message" id="user_message"/>
+            <button type="submit" id="send-btn">Send</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf-8">
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // Connect to websocket
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+        let room = "Lounge"
+
+    
+        socket.on('connect', function () {
+            socket.send("I am connected");
+            joinRoom(room);
+        });
+    
+        socket.on('message',data => {
+            console.log(data);
+            const msg = document.createElement('div');
+            const br = document.createElement('br');
+            msg.innerHTML = data
+            if (!data.includes("{{session['loginname']}}")) {
+                msg.classList.add("right")
+            }
+
+            msg.classList.add("bubble")
+            document.querySelector('#chatbox').append(msg);
+        });
+    
+        function joinRoom(room,username) {
+            socket.emit('join', {});
+        }
+    
+        document.querySelector('#send-btn').onclick = () => {
+            room = "{{ session['loginname'] }}`s room";
+            const thing = [document.querySelector('#user_message').value, room, "{{session['loginname']}}"];
+            document.querySelector('#user_message').value = "";
+            socket.emit("message", thing);
+            console.log("Test");
+        }
+
+        input.addEventListener("keypress", function(event) {
+
+            if (event.key === "Enter") {
+              // Cancel the default action, if needed
+              event.preventDefault();
+              // Trigger the button element with a click
+              document.getElementById("send-btn").click();
+            }
+          });
+    })
+</script>
+{% endblock %}

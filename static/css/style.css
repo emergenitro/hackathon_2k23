@@ -1,0 +1,91 @@
+header {
+    width: 100%;
+    height: 40vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-aliens {
+    color: #f1f1f1;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.underline {
+    position: relative;
+}
+  
+.underline:after {
+    content: '';
+    display: block;
+    background-image: url('/static/assets/underline.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 20px;
+    width: 100%;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+}
+
+.outer {
+    display: table;
+    height: 50vh;
+    margin-top: 100px;
+    width: 100%;
+    background-color: #2E4F4F;
+    color: white;
+    padding: 40px;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.innie {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.innie li {
+    display: inline-block;
+    font-size: 1.5em;
+    list-style-type: none;
+    padding: 1em;
+    text-transform: uppercase;
+}
+
+.innie li span {
+    display: block;
+    font-size: 4.5rem;
+}
+
+.innie .emoji {
+    display: none;
+    padding: 1rem;
+}
+
+.innie .emoji span {
+    font-size: 4rem;
+    padding: 0 .5rem;
+}
+
+@media all and (max-width: 768px) {
+    .innie h1 {
+        font-size: 1.5rem;
+    }
+    li {
+        font-size: 1.125rem;
+        padding: .75rem;
+    }
+    li span {
+        font-size: 3.375rem;
+    }
+    .schedule {
+        margin-top: 1000px !important;
+    }
+}

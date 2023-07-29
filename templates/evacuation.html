@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tipsevac.css') }}">
+{% endblock %}
+{% block content %}
+<div class="body-wrap">
+    <h3 class="headings">
+        Ways to evacuate the Earth
+    </h3>
+    <p>
+        Our team has started creating a new world on Mars. If you are unsure of our ability to win the game and believe this war is inevitable, then you may escape to Mars via the following ways: 
+    </p>
+    <br>
+    <br>
+    <ol>
+        <li>NASA's commercial space craft</li>
+        <li>SpaceX's commercial space craft</li>
+        <li>Interplanetary Travel Services (IPTS)</li>
+        <li>Your own spacecraft (contact a space agency to coordinate take off and landing)</li>
+    </ol>
+</div>
+{% endblock %}

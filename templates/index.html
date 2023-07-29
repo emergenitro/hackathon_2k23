@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+{% block content %}
+<header class="grad">
+    <h1 class="header-aliens">Aliens are invading!</h1>
+</header>
+<div class="body-wrap">
+    <h3 class="headings">Background: What is the crisis?</h3>
+    <p>
+        Humans have spent their whole lives exploiting the planet that selflessly gave them shelter. But now, we must pay for our actions. NASA has intercepted a cryptic message from outer space. It's from Aliens. They have threatened to invade Earth, and destroy our civilization as punishment for our wrongdoings. 
+    </p>
+    <h3 class="headings">What did they tell us?</h3>
+    <video width="320" height="240" controls>
+        <source src="{{ url_for('static', filename='assets/nasa_viid.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+<div class="outer">
+    <div class="middle">
+        <div class="innie">
+            <div id="countdown">
+                <ul>
+                    <li><span id="days"></span>days</li>
+                    <li><span id="hours"></span>Hours</li>
+                    <li><span id="minutes"></span>Minutes</li>
+                    <li><span id="seconds"></span>Seconds</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="body-wrap">
+    <h3 class="headings">What now?</h3>
+    <p>
+        It is up to us to stop them. We must successfully clear a game the Aliens will be sending us. If we prove our intelligence, they will let us go. If not, this could be the end of our species…
+<br><br>
+For further information on the crisis, contact us through our communication channels or our live chat. In case you wish to evacuate Earth, or are unsure of what to do, scroll down! 
+<br><br>
+Stay tuned for further developments and any messages from the Aliens.
+
+    </p>
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tipsevac.css') }}">
+{% endblock %}
+{% block content %}
+<div class="body-wrap">
+    <h3 class="headings">
+        How to stay calm
+    </h3>
+    <p>
+        We are all immensely stressed about the self-inflicted situation. However, we must not give up. Try the following strategies to stay calm and composed as we tackle this crisis:
+        (If you are looking for someone to talk to, contact our 24/7 panic hotline.) 
+    </p>
+    <br>
+    <br>
+    <ol>
+        <li>De-stressing activities (painting, reading, meditation, gardening, etc)</li>
+        <li>Drink plenty of water and have regular meals </li>
+        <li>Talk to your friends or family about the situation</li>
+        <li>Follow a regular routine </li>
+    </ol>
+    <h3 class="headings">
+        How can <span class="underline">you</span> help?
+    </h3>
+    <ol>
+        <li>Spread awareness about the crisis</li>
+        <li>Keep track of updates through our website, and think of ways to face the Aliens- you can contact us with your ideas</li>
+        <li>Practice gaming to be able to successfully clear their game</li>
+        <li>Be prepared incase of an invasion!</li>
+    </ol>
+</div>
+{% endblock %}
